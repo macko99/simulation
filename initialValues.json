@@ -1,0 +1,17 @@
+[
+    {
+        "plantsTarget": "200",
+        "adamsTarget": "10",
+        "width": "100",
+        "height": "30",
+        "jungleWidth": "10",
+        "jungleHeight": "10",
+        "plantEnergy": "20",
+        "animalEnergy": "20",
+        "explodeEnergy": "2000",
+        "minCopulateEnergy": "10",
+        "moveEnergy": "1",
+        "plantPerDay": "1",
+        "delay": "10"
+    }
+]
