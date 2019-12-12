@@ -2,21 +2,21 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Settings extends JPanel implements ActionListener {
+class Settings extends JPanel implements ActionListener {
 
-    private JTextField plantsTarget;
-    private JTextField adamsTarget;
-    private JTextField width;
-    private JTextField height;
-    private JTextField jungleWidth;
-    private JTextField jungleHeight;
-    private JTextField plantEnergy;
-    private JTextField animalEnergy;
-    private JTextField explodeEnergy;
-    private JTextField minCopulateEnergy;
-    private JTextField moveEnergy;
-    private JTextField plantPerDay;
-    private JTextField delay;
+    private final JTextField plantsTarget;
+    private final JTextField adamsTarget;
+    private final JTextField width;
+    private final JTextField height;
+    private final JTextField jungleWidth;
+    private final JTextField jungleHeight;
+    private final JTextField plantEnergy;
+    private final JTextField animalEnergy;
+    private final JTextField explodeEnergy;
+    private final JTextField minCopulateEnergy;
+    private final JTextField moveEnergy;
+    private final JTextField plantPerDay;
+    private final JTextField delay;
 
     Settings(String[] defaultValues) {
 

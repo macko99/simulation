@@ -1,13 +1,13 @@
 import java.awt.*;
 
-public class Animal {
+class Animal {
 
     private Position position;
     private Direction direction;
-    private Gene gene;
+    private final Gene gene;
     int energy;
-    private WorldMap map;
-    private int animalEnergy;
+    private final WorldMap map;
+    private final int animalEnergy;
 
     Animal(WorldMap map, Position position, int energy) {
         this.energy = energy;

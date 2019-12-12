@@ -6,23 +6,20 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-class JSONReader
-{
+class JSONReader {
 
     String[] initialDefaultValues;
 
-    JSONReader()
-    {
+    JSONReader() {
         JSONParser parser = new JSONParser();
 
-        try (FileReader reader = new FileReader("initialValues.json"))
-        {
+        try (FileReader reader = new FileReader("initialValues.json")) {
 
             Object obj = parser.parse(reader);
 
             JSONArray defaultValues = (JSONArray) obj;
 
-            for(Object value : defaultValues){
+            for (Object value : defaultValues) {
                 parseDefaultValue((JSONObject) value);
             }
 
@@ -33,8 +30,7 @@ class JSONReader
 
     }
 
-    private void parseDefaultValue(JSONObject value)
-    {
+    private void parseDefaultValue(JSONObject value) {
         this.initialDefaultValues = new String[]{(String) value.get("plantsTarget"),
                 (String) value.get("adamsTarget"),
                 (String) value.get("width"),

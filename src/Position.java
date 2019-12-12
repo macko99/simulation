@@ -1,7 +1,7 @@
-public class Position {
+class Position {
 
-     int x;
-     int y;
+    int x;
+    int y;
 
     Position(int x, int y) {
         this.x = x;
@@ -9,14 +9,14 @@ public class Position {
     }
 
     Position add(Position other) {
-        return new Position(other.x+this.x, other.y+this.y);
+        return new Position(other.x + this.x, other.y + this.y);
     }
 
     @Override
     public boolean equals(Object other) {
         if (this == other)
             return true;
-        if(!(other instanceof Position))
+        if (!(other instanceof Position))
             return false;
         Position vector = (Position) other;
         return vector.x == this.x && vector.y == this.y;
