@@ -157,10 +157,9 @@ class WorldMap {
         animals.put(newPosition, animal);
     }
 
-    Animal getAnimalAtPosition(Position clicked){
+    List <Animal> getAnimalAtPosition(Position clicked){
         if(animals.containsKey(clicked)){
-            List<Animal> findHere = new ArrayList<>(animals.get(clicked));
-            return findHere.get(0);
+            return new ArrayList<>(animals.get(clicked));
         }
         return null;
     }

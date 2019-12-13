@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
 
 class Simulation implements ActionListener, MouseListener {
 
@@ -88,10 +89,12 @@ class Simulation implements ActionListener, MouseListener {
             int x = e.getX() / renderer.widthScale;
             int y = e.getY() / renderer.heightScale;
 
-            Animal clicked = map.getAnimalAtPosition(new Position(x, y));
-            if (clicked != null) {
-                AnimalDetails details = new AnimalDetails(clicked);
+            if(map.getAnimalAtPosition(new Position(x, y)) != null){
+                for(Animal animal : map.getAnimalAtPosition(new Position(x, y))){
+                    new AnimalDetails(animal);
+                }
             }
+
         }
 
     };
