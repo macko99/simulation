@@ -24,11 +24,15 @@ class StatusBar extends JPanel {
         g.drawString("Umarło: " + map.getDeadCount(), 320, 15);
         g.drawString("Eksplodowało: " + map.getExplodedCount(), 430, 15);
         g.drawString("Urodziło się: " + map.getBornCount(), 560, 15);
-        g.drawString("2019 Maciej Kozub", 800, 15);
+        g.drawString("śr. energia: " + map.getAvgAnimalEnergy(), 680, 15);
+        g.drawString("śr. dni: " + map.getAvgAnimalDaysAlive(), 800, 15);
+        g.drawString("śr. dzieci: " + map.getAvgAnimalChildrenCount(), 900, 15);
+        g.drawString("dom. gen: " + map.getMapDominateGene(), 970, 15);
+        g.drawString("STOP/START", 1050, 15);
+
 
         if (map.getAnimalSize() == 0) {
             simulation.cancelTimer();
-            g.drawString("KONIEC", 670, 15);
         }
     }
 

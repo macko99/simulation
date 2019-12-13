@@ -30,4 +30,9 @@ class Position {
         return hash;
     }
 
+    @Override
+    public String toString(){
+        return this.x + ", "+this.y;
+    }
+
 }

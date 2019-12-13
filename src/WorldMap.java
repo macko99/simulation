@@ -5,8 +5,8 @@ import java.util.*;
 
 class WorldMap {
 
-    final int width;
-    final int height;
+    private final int width;
+    private final int height;
     private final int plantEnergy;
     private final int jungleHeight;
     private final int jungleWidth;
@@ -18,6 +18,10 @@ class WorldMap {
     private int bornCount = 0;
     private int deadCount = 0;
     private int explodedCount = 0;
+    private int totalMapAnimalEnergy = 0;
+    private int totalMapAnimalDaysAlive = 0;
+    private int totalMapAnimalChildrenCount = 0;
+    private int[] dominateGeneCounter = new int[8];
 
     private final Map<Position, Plant> plantsMap = new HashMap<>();
     private final MultiValuedMap<Position, Animal> animals = new ArrayListValuedHashMap<>();
@@ -79,11 +83,18 @@ class WorldMap {
     void day() {
         removeDead();
 
+        totalMapAnimalChildrenCount = 0;
+        totalMapAnimalDaysAlive = 0;
+        totalMapAnimalEnergy = 0;
+        dominateGeneCounter = new int[8];
         List<Animal> animalsL = new ArrayList<>(animals.values());
         for (Animal animal : animalsL) {
             animal.rotateAndMove();
+            dominateGeneCounter[animal.getDominantGene()]++;
+            totalMapAnimalEnergy += animal.energy;
+            totalMapAnimalDaysAlive += animal.getDaysAlive();
+            totalMapAnimalChildrenCount += animal.getMyChildrenCount();
         }
-
         eat();
         growPlants(plantPerDay);
         copulate();
@@ -146,6 +157,50 @@ class WorldMap {
         animals.put(newPosition, animal);
     }
 
+    Animal getAnimalAtPosition(Position clicked){
+        if(animals.containsKey(clicked)){
+            List<Animal> findHere = new ArrayList<>(animals.get(clicked));
+            return findHere.get(0);
+        }
+        return null;
+    }
+
+    int getAvgAnimalEnergy() {
+        if(animals.size() != 0){
+            return totalMapAnimalEnergy/animals.size();
+        }
+        return 0;
+    }
+
+    int getAvgAnimalDaysAlive(){
+        if(animals.size() != 0){
+            return totalMapAnimalDaysAlive/animals.size();
+        }
+        return 0;
+    }
+
+    int getAvgAnimalChildrenCount(){
+        if(animals.size() != 0){
+            return totalMapAnimalChildrenCount/animals.size();
+        }
+        return 0;
+    }
+
+    int getMapDominateGene(){
+        if(animals.size() == 0)
+            return 0;
+
+        int gene = 0;
+        int counter = 0;
+        for(int i=0; i<8; i++){
+            if(dominateGeneCounter[i] > counter) {
+                counter = dominateGeneCounter[i];
+                gene = i;
+            }
+        }
+        return gene;
+    }
+
     int getAnimalSize() {
         return animals.size();
     }
@@ -164,6 +219,14 @@ class WorldMap {
 
     int getExplodedCount() {
         return explodedCount;
+    }
+
+    int getWidth(){
+        return this.width;
+    }
+
+    int getHeight(){
+        return this.height;
     }
 
     List<Plant> getPlants() {

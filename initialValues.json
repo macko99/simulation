@@ -7,7 +7,7 @@
         "jungleWidth": "10",
         "jungleHeight": "10",
         "plantEnergy": "20",
-        "animalEnergy": "20",
+        "animalEnergy": "40",
         "explodeEnergy": "2000",
         "minCopulateEnergy": "10",
         "moveEnergy": "1",

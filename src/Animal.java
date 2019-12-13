@@ -6,6 +6,8 @@ class Animal {
     private Direction direction;
     private final Gene gene;
     int energy;
+    private int daysAlive = 0;
+    private int myChildrenCount = 0;
     private final WorldMap map;
     private final int animalEnergy;
 
@@ -29,11 +31,31 @@ class Animal {
         this.direction = Direction.DEG0;
         this.map = map;
         this.gene = new Gene(parent1.gene, parent2.gene);
+        parent1.myChildrenCount++;
+        parent2.myChildrenCount++;
+    }
+
+    int getDaysAlive(){
+        return daysAlive;
+    }
+
+    int getMyChildrenCount(){
+        return myChildrenCount;
+    }
+
+    int getDominantGene(){
+        return gene.getDominantGene();
+    }
+
+    int[] getMyGene(){
+        return gene.getGene();
     }
 
     Position getPosition() {
         return this.position;
     }
+
+    Direction getDirection() {return this.direction;}
 
     @Override
     public boolean equals(Object other) {
@@ -77,10 +99,11 @@ class Animal {
         }
 
         Position newPosition = this.position.add(this.direction.toUnitVector());
-        newPosition.x = Math.floorMod(newPosition.x, map.width);
-        newPosition.y = Math.floorMod(newPosition.y, map.height);
+        newPosition.x = Math.floorMod(newPosition.x, map.getWidth());
+        newPosition.y = Math.floorMod(newPosition.y, map.getHeight());
         map.positionChanged(position, newPosition, this);
         this.position = newPosition;
+        this.daysAlive++;
     }
 
     Color toColor(){

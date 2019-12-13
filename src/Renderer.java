@@ -5,26 +5,26 @@ class Renderer extends JPanel {
 
     private final WorldMap map;
     private final Simulation simulation;
+    int widthScale;
+    int heightScale;
 
     Renderer(WorldMap map, Simulation simulation) {
         this.map = map;
         this.simulation = simulation;
+        this.setSize(simulation.frame.getWidth(), simulation.frame.getHeight() - 60);
+
+        widthScale =  this.getWidth() / map.getWidth();
+        heightScale = this.getHeight() / map.getHeight();
     }
 
     @Override
     protected void paintComponent(Graphics g) {
 
         super.paintComponent(g);
-
         this.setSize(simulation.frame.getWidth(), simulation.frame.getHeight() - 60);
 
-        int width = this.getWidth();
-        int height = this.getHeight();
-        int widthScale = width / map.width;
-        int heightScale = height / map.height;
-
         g.setColor(new Color(255, 250, 165));
-        g.fillRect(0, 0, width, height);
+        g.fillRect(0, 0, this.getWidth(), this.getHeight());
 
         for (Plant plant : map.getPlants()) {
             g.setColor(plant.toColor());

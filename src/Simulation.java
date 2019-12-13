@@ -1,9 +1,8 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 
-class Simulation implements ActionListener {
+class Simulation implements ActionListener, MouseListener {
 
     private final WorldMap map;
     private final Renderer renderer;
@@ -27,6 +26,9 @@ class Simulation implements ActionListener {
         statusBar = new StatusBar(map, this);
         statusBar.setSize(new Dimension(1, 1));
 
+        renderer.addMouseListener(listener);
+        statusBar.addMouseListener(this);
+
         frame.add(renderer);
         frame.add(statusBar);
 
@@ -45,5 +47,53 @@ class Simulation implements ActionListener {
         this.timer.stop();
         frame.setTitle("Nowy świat - KONIEC");
     }
+
+    @Override
+    public void mouseClicked(MouseEvent mouseEvent) {
+        if(this.timer.isRunning()){
+            this.timer.stop();
+            frame.setTitle("Nowy świat - PAUZA");
+        }
+        else{
+            this.timer.start();
+            frame.setTitle("Nowy świat - symulacja trwa");
+        }
+    }
+
+    @Override
+    public void mousePressed(MouseEvent mouseEvent) {
+
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent mouseEvent) {
+
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent mouseEvent) {
+
+    }
+
+    @Override
+    public void mouseExited(MouseEvent mouseEvent) {
+
+    }
+
+
+    private MouseListener listener = new MouseAdapter() {
+
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            int x = e.getX() / renderer.widthScale;
+            int y = e.getY() / renderer.heightScale;
+
+            Animal clicked = map.getAnimalAtPosition(new Position(x, y));
+            if (clicked != null) {
+                AnimalDetails details = new AnimalDetails(clicked);
+            }
+        }
+
+    };
 
 }
