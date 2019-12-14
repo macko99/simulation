@@ -8,7 +8,7 @@ class AnimalDetails implements MouseListener{
     private JFrame menuFrame = new JFrame("Szczegóły zwierzęcia");
 
     AnimalDetails(Animal animal) {
-        menuFrame.setSize(500, 200);
+        menuFrame.setSize(500, 250);
         menuFrame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         menuFrame.add(new AnimalDetailsPrinter(animal));
         menuFrame.setLocationRelativeTo(null);

@@ -107,6 +107,7 @@ class Animal {
     }
 
     Color toColor(){
+        //if(gene.getDominantGene() == map.getMapDominateGene()) return new Color(61, 62, 237);
         if(energy < animalEnergy ) return new Color(237, 61, 76);
         if(energy < 2*animalEnergy ) return new Color(204, 53, 68);
         if(energy < 5*animalEnergy )return new Color(170, 45, 58);

@@ -12,7 +12,6 @@ class Renderer extends JPanel {
         this.map = map;
         this.simulation = simulation;
         this.setSize(simulation.frame.getWidth(), simulation.frame.getHeight() - 60);
-
         widthScale =  this.getWidth() / map.getWidth();
         heightScale = this.getHeight() / map.getHeight();
     }
@@ -22,8 +21,10 @@ class Renderer extends JPanel {
 
         super.paintComponent(g);
         this.setSize(simulation.frame.getWidth(), simulation.frame.getHeight() - 60);
+        widthScale =  this.getWidth() / map.getWidth();
+        heightScale = this.getHeight() / map.getHeight();
 
-        g.setColor(new Color(255, 250, 165));
+        g.setColor(new Color(243, 255, 182));
         g.fillRect(0, 0, this.getWidth(), this.getHeight());
 
         for (Plant plant : map.getPlants()) {
@@ -34,6 +35,10 @@ class Renderer extends JPanel {
         for (Animal animal : map.getAnimals()) {
             g.setColor(animal.toColor());
             g.fillOval(animal.getPosition().x * widthScale, animal.getPosition().y * heightScale, widthScale, heightScale);
+            if(animal.getDominantGene() == simulation.dominantGene) {
+                g.setColor(Color.white);
+                g.fillOval(animal.getPosition().x * widthScale + 3*widthScale / 8, animal.getPosition().y * heightScale + 3*heightScale / 8, widthScale / 3, heightScale / 3);
+            }
         }
     }
 

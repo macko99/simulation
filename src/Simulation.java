@@ -9,6 +9,7 @@ class Simulation implements ActionListener, MouseListener {
     private final StatusBar statusBar;
     private final Timer timer;
     final JFrame frame = new JFrame("Nowy świat - symulacja trwa");
+    int dominantGene;
 
     Simulation(WorldMap map, int delay) {
 

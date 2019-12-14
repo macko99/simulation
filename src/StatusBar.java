@@ -18,6 +18,7 @@ class StatusBar extends JPanel {
         this.setSize(simulation.frame.getWidth(), 60);
         this.setLocation(0, simulation.frame.getHeight() - 60);
         totalDays++;
+        simulation.dominantGene = map.getMapDominateGene();
         g.drawString("Dni: " + totalDays, 15, 15);
         g.drawString("Zwierząt: " + map.getAnimalSize(), 100, 15);
         g.drawString("Roślin: " + map.getPlantSize(), 210, 15);
@@ -27,7 +28,7 @@ class StatusBar extends JPanel {
         g.drawString("śr. energia: " + map.getAvgAnimalEnergy(), 670, 15);
         g.drawString("śr. dni: " + map.getAvgAnimalDaysAlive(), 790, 15);
         g.drawString("śr. dzieci: " + map.getAvgAnimalChildrenCount(), 885, 15);
-        g.drawString("dom. gen: " + map.getMapDominateGene(), 970, 15);
+        g.drawString("dom. gen: " + simulation.dominantGene, 970, 15);
         g.drawString("STOP/START", 1070, 15);
         g.drawRoundRect(1065,0,90,21,5,5);
 

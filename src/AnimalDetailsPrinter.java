@@ -9,6 +9,8 @@ class AnimalDetailsPrinter extends JPanel {
 
         JLabel geneL = new JLabel("gen:   ");
         JLabel gene = new JLabel(Arrays.toString(animal.getMyGene()));
+        JLabel dominantGeneL = new JLabel("dom. gen:   ");
+        JLabel dominantGene = new JLabel(String.valueOf(animal.getDominantGene()));
         JLabel energyL = new JLabel("energia:   ");
         JLabel energy = new JLabel(String.valueOf(animal.energy));
         JLabel positionL = new JLabel("pozycja:   ");
@@ -21,6 +23,7 @@ class AnimalDetailsPrinter extends JPanel {
         JLabel childrenCount = new JLabel(String.valueOf(animal.getMyChildrenCount()));
 
         geneL.setLabelFor(gene);
+        dominantGeneL.setLabelFor(dominantGene);
         energyL.setLabelFor(energy);
         positionL.setLabelFor(position);
         directionL.setLabelFor(direction);
@@ -33,6 +36,7 @@ class AnimalDetailsPrinter extends JPanel {
         JPanel p4 = new JPanel();
         JPanel p5 = new JPanel();
         JPanel p6 = new JPanel();
+        JPanel p7 = new JPanel();
 
         p1.add(geneL);
         p1.add(gene);
@@ -46,8 +50,11 @@ class AnimalDetailsPrinter extends JPanel {
         p5.add(daysAlive);
         p6.add(childrenCountL);
         p6.add(childrenCount);
+        p7.add(dominantGeneL);
+        p7.add(dominantGene);
 
         add(p1);
+        add(p7);
         add(p2);
         add(p3);
         add(p4);
