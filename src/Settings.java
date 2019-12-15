@@ -17,6 +17,7 @@ class Settings extends JPanel implements ActionListener {
     private final JTextField moveEnergy;
     private final JTextField plantPerDay;
     private final JTextField delay;
+    private final JTextField statsTime;
 
     Settings(String[] defaultValues) {
 
@@ -74,6 +75,10 @@ class Settings extends JPanel implements ActionListener {
         delay.setColumns(10);
         delay.setText(defaultValues[12]);
 
+        statsTime = new JTextField();
+        statsTime.setColumns(10);
+        statsTime.setText(defaultValues[13]);
+
         JLabel plantsTargetL = new JLabel("Roślin na początku (na strefę):   ");
         JLabel adamsTargetL = new JLabel("Zwierząt na początku:     ");
         JLabel widthL = new JLabel("Szerekość mapy:     ");
@@ -87,6 +92,7 @@ class Settings extends JPanel implements ActionListener {
         JLabel moveEnergyL = new JLabel("Energia poruszania się:    ");
         JLabel plantPerDayL = new JLabel("Liczba nowych roślin na dzień (na strefę):    ");
         JLabel delayL = new JLabel("Odświeżanie (ms):    ");
+        JLabel statsTimeL = new JLabel("Po ilu dniach statytyka (0 - brak)   ");
 
         plantsTargetL.setLabelFor(plantsTarget);
         adamsTargetL.setLabelFor(adamsTarget);
@@ -101,6 +107,7 @@ class Settings extends JPanel implements ActionListener {
         moveEnergyL.setLabelFor(moveEnergy);
         plantPerDayL.setLabelFor(plantPerDay);
         delayL.setLabelFor(delay);
+        statsTimeL.setLabelFor(statsTime);
 
         JButton button = new JButton("Start!");
         button.addActionListener(this);
@@ -119,6 +126,7 @@ class Settings extends JPanel implements ActionListener {
         JPanel p12 = new JPanel();
         JPanel p13 = new JPanel();
         JPanel p14 = new JPanel();
+        JPanel p15 = new JPanel();
 
         p1.add(plantsTargetL);
         p1.add(plantsTarget);
@@ -146,7 +154,9 @@ class Settings extends JPanel implements ActionListener {
         p12.add(plantPerDay);
         p13.add(delayL);
         p13.add(delay);
-        p14.add(button);
+        p14.add(statsTimeL);
+        p14.add(statsTime);
+        p15.add(button);
 
         add(p1);
         add(p2);
@@ -162,6 +172,7 @@ class Settings extends JPanel implements ActionListener {
         add(p12);
         add(p13);
         add(p14);
+        add(p15);
     }
 
     @Override
@@ -182,7 +193,7 @@ class Settings extends JPanel implements ActionListener {
                 Integer.parseInt(plantPerDay.getText())
         );
 
-        new Simulation(map, Integer.parseInt(delay.getText()));
+        new Simulation(map, Integer.parseInt(delay.getText()), Integer.parseInt(statsTime.getText()));
 
     }
 }

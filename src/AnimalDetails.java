@@ -5,7 +5,7 @@ import java.awt.event.WindowEvent;
 
 class AnimalDetails implements MouseListener{
 
-    private JFrame menuFrame = new JFrame("Szczegóły zwierzęcia");
+    private final JFrame menuFrame = new JFrame("Szczegóły zwierzęcia");
 
     AnimalDetails(Animal animal) {
         menuFrame.setSize(500, 250);

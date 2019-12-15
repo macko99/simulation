@@ -5,11 +5,13 @@ class StatusBar extends JPanel {
 
     private final WorldMap map;
     private final Simulation simulation;
+    private final int statsTime;
     private int totalDays = 0;
 
-    StatusBar(WorldMap map, Simulation simulation) {
+    StatusBar(WorldMap map, Simulation simulation, int statsTime) {
         this.map = map;
         this.simulation = simulation;
+        this.statsTime = statsTime;
     }
 
     @Override
@@ -18,6 +20,11 @@ class StatusBar extends JPanel {
         this.setSize(simulation.frame.getWidth(), 60);
         this.setLocation(0, simulation.frame.getHeight() - 60);
         totalDays++;
+        if(totalDays == statsTime){
+            new JSONWriter(totalDays, map.getAnimalSize(), map.getPlantSize(), map.getDeadCount(),
+                    map.getExplodedCount(), map.getBornCount(), map.getAvgAnimalEnergy(), map.getAvgAnimalDaysAlive(),
+                    map.getAvgAnimalChildrenCount(), simulation.dominantGene);
+        }
         simulation.dominantGene = map.getMapDominateGene();
         g.drawString("Dni: " + totalDays, 15, 15);
         g.drawString("Zwierząt: " + map.getAnimalSize(), 100, 15);
@@ -31,7 +38,6 @@ class StatusBar extends JPanel {
         g.drawString("dom. gen: " + simulation.dominantGene, 970, 15);
         g.drawString("STOP/START", 1070, 15);
         g.drawRoundRect(1065,0,90,21,5,5);
-
 
         if (map.getAnimalSize() == 0) {
             simulation.cancelTimer();

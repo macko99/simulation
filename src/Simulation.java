@@ -11,7 +11,22 @@ class Simulation implements ActionListener, MouseListener {
     final JFrame frame = new JFrame("Nowy świat - symulacja trwa");
     int dominantGene;
 
-    Simulation(WorldMap map, int delay) {
+    Simulation(WorldMap map, int delay, int statsTime) {
+
+        MouseListener listener = new MouseAdapter() {
+
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                int x = e.getX() / renderer.widthScale;
+                int y = e.getY() / renderer.heightScale;
+
+                if (map.getAnimalAtPosition(new Position(x, y)) != null) {
+                    for (Animal animal : map.getAnimalAtPosition(new Position(x, y))) {
+                        new AnimalDetails(animal);
+                    }
+                }
+            }
+        };
 
         this.map = map;
         timer = new Timer(delay, this);
@@ -24,7 +39,7 @@ class Simulation implements ActionListener, MouseListener {
         renderer = new Renderer(map, this);
         renderer.setSize(new Dimension(1, 1));
 
-        statusBar = new StatusBar(map, this);
+        statusBar = new StatusBar(map, this, statsTime);
         statusBar.setSize(new Dimension(1, 1));
 
         renderer.addMouseListener(listener);
@@ -80,23 +95,5 @@ class Simulation implements ActionListener, MouseListener {
     public void mouseExited(MouseEvent mouseEvent) {
 
     }
-
-
-    private MouseListener listener = new MouseAdapter() {
-
-        @Override
-        public void mouseClicked(MouseEvent e) {
-            int x = e.getX() / renderer.widthScale;
-            int y = e.getY() / renderer.heightScale;
-
-            if(map.getAnimalAtPosition(new Position(x, y)) != null){
-                for(Animal animal : map.getAnimalAtPosition(new Position(x, y))){
-                    new AnimalDetails(animal);
-                }
-            }
-
-        }
-
-    };
 
 }

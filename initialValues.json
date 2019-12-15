@@ -12,6 +12,7 @@
         "minCopulateEnergy": "10",
         "moveEnergy": "1",
         "plantPerDay": "1",
-        "delay": "10"
+        "delay": "10",
+        "statsTime": "1000"
     }
 ]

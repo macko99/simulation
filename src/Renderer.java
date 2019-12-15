@@ -11,9 +11,6 @@ class Renderer extends JPanel {
     Renderer(WorldMap map, Simulation simulation) {
         this.map = map;
         this.simulation = simulation;
-        this.setSize(simulation.frame.getWidth(), simulation.frame.getHeight() - 60);
-        widthScale =  this.getWidth() / map.getWidth();
-        heightScale = this.getHeight() / map.getHeight();
     }
 
     @Override
