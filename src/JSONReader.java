@@ -25,7 +25,7 @@ class JSONReader {
 
         } catch (IOException | ParseException e) {
             e.printStackTrace();
-            this.initialDefaultValues = new String[]{"200", "10", "100", "30", "10", "10", "20", "20", "2000", "10", "1", "1", "10", "1000"};
+            this.initialDefaultValues = new String[]{"200", "10", "100", "30", "10", "10", "20", "20", "2000", "10", "1", "1", "10", "0"};
         }
 
     }
