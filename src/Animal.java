@@ -5,7 +5,7 @@ class Animal {
     private Position position;
     private Direction direction;
     private final Gene gene;
-    int energy;
+    private int energy;
     private int daysAlive = 0;
     private int myChildrenCount = 0;
     private final WorldMap map;
@@ -45,6 +45,14 @@ class Animal {
 
     int getDominantGene(){
         return gene.getDominantGene();
+    }
+
+    int getEnergy(){
+        return energy;
+    }
+
+    void setEnergy(int energy){
+        this.energy = energy;
     }
 
     int[] getMyGene(){

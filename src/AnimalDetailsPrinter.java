@@ -12,7 +12,7 @@ class AnimalDetailsPrinter extends JPanel {
         JLabel dominantGeneL = new JLabel("dom. gen:   ");
         JLabel dominantGene = new JLabel(String.valueOf(animal.getDominantGene()));
         JLabel energyL = new JLabel("energia:   ");
-        JLabel energy = new JLabel(String.valueOf(animal.energy));
+        JLabel energy = new JLabel(String.valueOf(animal.getEnergy()));
         JLabel positionL = new JLabel("pozycja:   ");
         JLabel position = new JLabel(animal.getPosition().toString());
         JLabel directionL = new JLabel("kierunek:   ");

@@ -61,7 +61,7 @@ class WorldMap {
 
     private void checkSpot(Position vector, Plant plant) {
         if (plant != null) {
-            plant.energy += plantEnergy / 2;
+            plant.setEnergy(plant.getEnergy() + plantEnergy / 2);
             plantsMap.put(vector, plant);
         } else if (!animals.containsKey(vector)) {
             plantsMap.put(vector, new Plant(vector, plantEnergy));
@@ -91,7 +91,7 @@ class WorldMap {
         for (Animal animal : animalsL) {
             animal.rotateAndMove();
             dominateGeneCounter[animal.getDominantGene()]++;
-            totalMapAnimalEnergy += animal.energy;
+            totalMapAnimalEnergy += animal.getEnergy();
             totalMapAnimalDaysAlive += animal.getDaysAlive();
             totalMapAnimalChildrenCount += animal.getMyChildrenCount();
         }
@@ -104,12 +104,12 @@ class WorldMap {
         List<Animal> dead = new ArrayList<>();
 
         for (Map.Entry<Position, Animal> entry : animals.entries()) {
-            entry.getValue().energy = entry.getValue().energy - moveEnergy;
-            if (entry.getValue().energy < 1) {
+            entry.getValue().setEnergy(entry.getValue().getEnergy() - moveEnergy);
+            if (entry.getValue().getEnergy() < 1) {
                 deadCount++;
                 dead.add(entry.getValue());
             }
-            if (entry.getValue().energy > explodeEnergy) {
+            if (entry.getValue().getEnergy() > explodeEnergy) {
                 explodedCount++;
                 dead.add(entry.getValue());
             }
@@ -125,13 +125,13 @@ class WorldMap {
             if (plantsMap.containsKey(position)) {
                 List<Animal> findEaters = new ArrayList<>(animals.get(position));
                 findEaters.sort(new EnergyComparator());
-                findEaters.removeIf(e -> e.energy < findEaters.get(0).energy);
+                findEaters.removeIf(e -> e.getEnergy() < findEaters.get(0).getEnergy());
 
-                int addedEnergy = plantsMap.get(position).energy / findEaters.size();
+                int addedEnergy = plantsMap.get(position).getEnergy() / findEaters.size();
                 plantsMap.remove(position);
 
                 for (Animal animal : findEaters) {
-                    animal.energy += addedEnergy;
+                    animal.setEnergy(animal.getEnergy() + addedEnergy);
                 }
             }
         }
@@ -143,7 +143,7 @@ class WorldMap {
                 List<Animal> findParents = new ArrayList<>(animals.get(position));
                 findParents.sort(new EnergyComparator());
                 findParents.subList(0, 2);
-                if (findParents.get(0).energy > minCopulateEnergy && findParents.get(1).energy > minCopulateEnergy) {
+                if (findParents.get(0).getEnergy() > minCopulateEnergy && findParents.get(1).getEnergy() > minCopulateEnergy) {
                     Animal child = new Animal(this, findParents.get(0), findParents.get(1));
                     bornCount++;
                     animals.put(child.getPosition(), child);

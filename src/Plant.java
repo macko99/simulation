@@ -2,7 +2,7 @@ import java.awt.*;
 
 class Plant {
 
-    int energy;
+    private int energy;
     private final Position position;
     private final int plantEnergy;
 
@@ -14,6 +14,14 @@ class Plant {
 
     Position getPosition() {
         return this.position;
+    }
+
+    int getEnergy(){
+        return energy;
+    }
+
+    void setEnergy(int energy){
+        this.energy = energy;
     }
 
     Color toColor() {
