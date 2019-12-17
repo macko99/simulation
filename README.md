@@ -26,7 +26,7 @@ Zwierzęta z białą kropką posiadają gen dominujący będący genem dominują
 <h2>Infomacje końcowe</h2>
 
 Jeżeli została wybrana opcja zapisania statystyk do pliku po danej liczbie dni, 
-automatycznie zostanie stworzony plik `results.json`
+automatycznie zostanie stworzony plik `results.json`.
 
 
 

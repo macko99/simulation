@@ -2,14 +2,14 @@ import java.awt.*;
 
 class Animal {
 
+    private final Gene gene;
+    private final WorldMap map;
+    private final int animalEnergy;
     private Position position;
     private Direction direction;
-    private final Gene gene;
     private int energy;
     private int daysAlive = 0;
     private int myChildrenCount = 0;
-    private final WorldMap map;
-    private final int animalEnergy;
 
     Animal(WorldMap map, Position position, int energy) {
         this.energy = energy;
@@ -20,11 +20,11 @@ class Animal {
         this.animalEnergy = energy;
     }
 
-    Animal(WorldMap map , Animal parent1, Animal parent2){
-        int en1 = parent1.energy/4;
-        int en2 = parent2.energy/4;
-        parent1.energy-=en1;
-        parent2.energy-=en2;
+    Animal(WorldMap map, Animal parent1, Animal parent2) {
+        int en1 = parent1.energy / 4;
+        int en2 = parent2.energy / 4;
+        parent1.energy -= en1;
+        parent2.energy -= en2;
         this.energy = en1 + en2;
         this.animalEnergy = parent1.animalEnergy;
         this.position = parent1.getPosition();
@@ -35,27 +35,27 @@ class Animal {
         parent2.myChildrenCount++;
     }
 
-    int getDaysAlive(){
+    int getDaysAlive() {
         return daysAlive;
     }
 
-    int getMyChildrenCount(){
+    int getMyChildrenCount() {
         return myChildrenCount;
     }
 
-    int getDominantGene(){
+    int getDominantGene() {
         return gene.getDominantGene();
     }
 
-    int getEnergy(){
+    int getEnergy() {
         return energy;
     }
 
-    void setEnergy(int energy){
+    void setEnergy(int energy) {
         this.energy = energy;
     }
 
-    int[] getMyGene(){
+    int[] getMyGene() {
         return gene.getGene();
     }
 
@@ -63,20 +63,22 @@ class Animal {
         return this.position;
     }
 
-    Direction getDirection() {return this.direction;}
+    Direction getDirection() {
+        return this.direction;
+    }
 
     @Override
     public boolean equals(Object other) {
         if (this == other)
             return true;
-        if(!(other instanceof Animal))
+        if (!(other instanceof Animal))
             return false;
         Animal animal = (Animal) other;
         return this.position.equals(animal.position) && this.direction.equals(animal.direction);
     }
 
-    void rotateAndMove(){
-        double randomIndex = Math.random()*32;
+    void rotateAndMove() {
+        double randomIndex = Math.random() * 32;
         int rotateIndex = (int) randomIndex;
 
         switch (gene.getGene()[rotateIndex]) {
@@ -114,17 +116,17 @@ class Animal {
         this.daysAlive++;
     }
 
-    Color toColor(){
+    Color toColor() {
         //if(gene.getDominantGene() == map.getMapDominateGene()) return new Color(61, 62, 237);
-        if(energy < animalEnergy ) return new Color(237, 61, 76);
-        if(energy < 2*animalEnergy ) return new Color(204, 53, 68);
-        if(energy < 5*animalEnergy )return new Color(170, 45, 58);
-        if(energy < 7*animalEnergy )return new Color(157, 42, 55);
-        if(energy < 10*animalEnergy )return new Color(137, 40, 53);
-        if(energy < 20*animalEnergy) return new Color(119, 38, 50);
-        if(energy < 25*animalEnergy ) return new Color(99, 34, 46);
-        if(energy < 30*animalEnergy )return new Color(78, 29, 43);
-        if(energy < 50*animalEnergy )return new Color(76, 30, 39);
+        if (energy < animalEnergy) return new Color(237, 61, 76);
+        if (energy < 2 * animalEnergy) return new Color(204, 53, 68);
+        if (energy < 5 * animalEnergy) return new Color(170, 45, 58);
+        if (energy < 7 * animalEnergy) return new Color(157, 42, 55);
+        if (energy < 10 * animalEnergy) return new Color(137, 40, 53);
+        if (energy < 20 * animalEnergy) return new Color(119, 38, 50);
+        if (energy < 25 * animalEnergy) return new Color(99, 34, 46);
+        if (energy < 30 * animalEnergy) return new Color(78, 29, 43);
+        if (energy < 50 * animalEnergy) return new Color(76, 30, 39);
         return new Color(52, 21, 26);
     }
 }

@@ -3,7 +3,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.WindowEvent;
 
-class AnimalDetails implements MouseListener{
+class AnimalDetails implements MouseListener {
 
     private final JFrame menuFrame = new JFrame("Szczegóły zwierzęcia");
 

@@ -47,16 +47,16 @@ class Gene {
         return this.gene;
     }
 
-    int getDominantGene(){
+    int getDominantGene() {
         int dominantGene = 8;
         int dominantGeneCounter = 0;
         int[] findDominantGene = new int[8];
 
-        for(int i=0; i<32; i++){
+        for (int i = 0; i < 32; i++) {
             findDominantGene[gene[i]]++;
         }
-        for(int i=0; i<8; i++){
-            if(findDominantGene[i] > dominantGeneCounter) {
+        for (int i = 0; i < 8; i++) {
+            if (findDominantGene[i] > dominantGeneCounter) {
                 dominantGeneCounter = findDominantGene[i];
                 dominantGene = i;
             }

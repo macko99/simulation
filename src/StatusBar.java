@@ -20,7 +20,7 @@ class StatusBar extends JPanel {
         this.setSize(simulation.frame.getWidth(), 60);
         this.setLocation(0, simulation.frame.getHeight() - 60);
         totalDays++;
-        if(totalDays == statsTime){
+        if (totalDays == statsTime) {
             new JSONWriter(totalDays, map.getAnimalSize(), map.getPlantSize(), map.getDeadCount(),
                     map.getExplodedCount(), map.getBornCount(), map.getAvgAnimalEnergy(), map.getAvgAnimalDaysAlive(),
                     map.getAvgAnimalChildrenCount(), simulation.dominantGene);
@@ -37,7 +37,7 @@ class StatusBar extends JPanel {
         g.drawString("śr. dzieci: " + map.getAvgAnimalChildrenCount(), 885, 15);
         g.drawString("dom. gen: " + simulation.dominantGene, 970, 15);
         g.drawString("STOP/START", 1070, 15);
-        g.drawRoundRect(1065,0,90,21,5,5);
+        g.drawRoundRect(1065, 0, 90, 21, 5, 5);
 
         if (map.getAnimalSize() == 0) {
             simulation.cancelTimer();

@@ -65,11 +65,10 @@ class Simulation implements ActionListener, MouseListener {
 
     @Override
     public void mouseClicked(MouseEvent mouseEvent) {
-        if(this.timer.isRunning()){
+        if (this.timer.isRunning()) {
             this.timer.stop();
             frame.setTitle("Nowy świat - PAUZA");
-        }
-        else{
+        } else {
             this.timer.start();
             frame.setTitle("Nowy świat - symulacja trwa");
         }

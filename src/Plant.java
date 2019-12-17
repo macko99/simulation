@@ -16,11 +16,11 @@ class Plant {
         return this.position;
     }
 
-    int getEnergy(){
+    int getEnergy() {
         return energy;
     }
 
-    void setEnergy(int energy){
+    void setEnergy(int energy) {
         this.energy = energy;
     }
 

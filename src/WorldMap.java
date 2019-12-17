@@ -157,42 +157,42 @@ class WorldMap {
         animals.put(newPosition, animal);
     }
 
-    List <Animal> getAnimalAtPosition(Position clicked){
-        if(animals.containsKey(clicked)){
+    List<Animal> getAnimalAtPosition(Position clicked) {
+        if (animals.containsKey(clicked)) {
             return new ArrayList<>(animals.get(clicked));
         }
         return null;
     }
 
     int getAvgAnimalEnergy() {
-        if(animals.size() != 0){
-            return totalMapAnimalEnergy/animals.size();
+        if (animals.size() != 0) {
+            return totalMapAnimalEnergy / animals.size();
         }
         return 0;
     }
 
-    int getAvgAnimalDaysAlive(){
-        if(animals.size() != 0){
-            return totalMapAnimalDaysAlive/animals.size();
+    int getAvgAnimalDaysAlive() {
+        if (animals.size() != 0) {
+            return totalMapAnimalDaysAlive / animals.size();
         }
         return 0;
     }
 
-    int getAvgAnimalChildrenCount(){
-        if(animals.size() != 0){
-            return totalMapAnimalChildrenCount/animals.size();
+    int getAvgAnimalChildrenCount() {
+        if (animals.size() != 0) {
+            return totalMapAnimalChildrenCount / animals.size();
         }
         return 0;
     }
 
-    int getMapDominateGene(){
-        if(animals.size() == 0)
+    int getMapDominateGene() {
+        if (animals.size() == 0)
             return 0;
 
         int gene = 0;
         int counter = 0;
-        for(int i=0; i<8; i++){
-            if(dominateGeneCounter[i] > counter) {
+        for (int i = 0; i < 8; i++) {
+            if (dominateGeneCounter[i] > counter) {
                 counter = dominateGeneCounter[i];
                 gene = i;
             }
@@ -220,11 +220,11 @@ class WorldMap {
         return explodedCount;
     }
 
-    int getWidth(){
+    int getWidth() {
         return this.width;
     }
 
-    int getHeight(){
+    int getHeight() {
         return this.height;
     }
 

@@ -11,27 +11,27 @@ public enum Direction {
     Position toUnitVector() {
         switch (this) {
             case DEG0:
-                return new Position(0,1);
+                return new Position(0, 1);
             case DEG45:
-                return new Position(1,1);
+                return new Position(1, 1);
             case DEG90:
-                return new Position(1,0);
+                return new Position(1, 0);
             case DEG135:
-                return new Position(1,-1);
+                return new Position(1, -1);
             case DEG180:
-                return new Position(0,-1);
+                return new Position(0, -1);
             case DEG225:
-                return new Position(-1,-1);
+                return new Position(-1, -1);
             case DEG270:
-                return new Position(-1,0);
+                return new Position(-1, 0);
             case DEG315:
-                return new Position(-1,1);
+                return new Position(-1, 1);
         }
-        return new Position(0,0);
+        return new Position(0, 0);
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         switch (this) {
             case DEG0:
                 return "0 stopni";
