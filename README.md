@@ -2,7 +2,7 @@
 
 Program symuluje świat, na którym żyją zwierzęta i rośliny.
 
-<h2>Informacje początkowe
+<h2>Informacje początkowe</h2>
 
 Po uruchominiu widzimy okno ustawień symulacji, wartości początkowe ładowane są z 
 pliku konfiguracyjnego `initialValues.json`.
