@@ -56,7 +56,6 @@ class Simulation implements ActionListener, MouseListener {
         map.day();
         renderer.repaint();
         statusBar.repaint();
-
     }
 
     void cancelTimer() {

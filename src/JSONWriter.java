@@ -20,7 +20,7 @@ class JSONWriter {
         results.put("średnia liczba dzieci", avgAnimalChildrenCount);
         results.put("gen dominujący", dominantGene);
 
-        try (FileWriter file = new FileWriter("wyniki.json")) {
+        try (FileWriter file = new FileWriter("results.json")) {
 
             file.write(results.toJSONString());
             file.flush();
